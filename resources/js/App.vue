@@ -18,6 +18,7 @@ const count = ref(0);
         <div style="display: flex; gap: 10px">
             <router-link to="/">Home</router-link>
             <router-link to="/about">About</router-link>
+            <router-link to="/information">information</router-link>
         </div>
 
         <router-view></router-view>
