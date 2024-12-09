@@ -5,7 +5,10 @@ const routes = [
     { path: "/about", component: () => import("./../pages/AboutView.vue") },
     {
         path:"/information",component:() =>import("./../pages/Information.vue")
-    }
+    },
+    {
+        path:"/create",component:() =>import("../pages/studentCreate.vue")
+    },
 ];
 
 const router = createRouter({
