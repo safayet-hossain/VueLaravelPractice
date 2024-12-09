@@ -3,14 +3,14 @@
         <h3 class="text-center mb-4">Student List</h3>
 
        <router-link to="/create" class="btn btn-success">Add a new student</router-link>
-        <table class="table table-bordered table-hover">
+        <table class="table table-dark table-striped">
             <thead class="thead-dark">
                 <tr>
                     <th>#</th>
-                    <th>Student Name</th>
-                    <th>Student ID</th>
-                    <th>Class</th>
-                    <th>Actions</th>
+                    <th col="5">Student Name:</th>
+                    <th col="2">Student ID:</th>
+                    <th col="2">Class:</th>
+                    <th col="2">Actions:</th>
                 </tr>
             </thead>
             <tbody>

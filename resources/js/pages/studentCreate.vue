@@ -5,15 +5,15 @@
       <form @submit.prevent="submitForm">
           <div class="mb-3">
               <label for="name" class="form-label">Student Name</label>
-              <input type="text" v-model="form.name" class="form-control" id="name" placeholder="Enter name">
+              <input type="text" v-model="data.name" class="form-control" id="name" placeholder="Shafayet Hossain">
           </div>
           <div class="mb-3">
               <label for="student_id" class="form-label">Student ID</label>
-              <input type="text" v-model="form.student_id" class="form-control" id="student_id" placeholder="Enter ID">
+              <input type="text" v-model="data.student_id" class="form-control" id="student_id" placeholder="Enter ID"  >
           </div>
           <div class="mb-3">
               <label for="class" class="form-label">Class</label>
-              <input type="text" v-model="form.class" class="form-control" id="class" placeholder="Enter class">
+              <input type="text" v-model="data.class" class="form-control" id="class" placeholder="Enter class">
           </div>
           <button type="submit" class="btn btn-success">{{ editing ? "Update" : "Add" }} Student</button>
       </form>
@@ -52,7 +52,7 @@ export default {
   data() {
       return {
           students: [],
-          form: {
+          data: {
               name: '',
               student_id: '',
               class: ''
@@ -74,24 +74,26 @@ export default {
       },
       async submitForm() {
           if (this.editing) {
-              await axios.put(`/api/students/${this.currentId}`, this.form);
+              await axios.put(`/api/students/${this.currentId}`, this.data);
           } else {
-              await axios.post('/api/students', this.form);
+              await axios.post('/api/students', this.data);
           }
           this.resetForm();
           this.fetchStudents();
       },
       editStudent(student) {
-          this.form = { ...student };
+          this.data = { ...student };
           this.editing = true;
           this.currentId = student.id;
+          console.log(this.currentId);
+          
       },
       async deleteStudent(id) {
           await axios.delete(`/api/students/${id}`);
           this.fetchStudents();
       },
       resetForm() {
-          this.form = {
+          this.data = {
               name: '',
               student_id: '',
               class: ''
